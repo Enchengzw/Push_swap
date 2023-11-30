@@ -6,7 +6,7 @@
 #    By: ezhou <ezhou@student.42malaga.com>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/11 16:53:06 by ezhou             #+#    #+#              #
-#    Updated: 2023/11/24 13:36:20 by ezhou            ###   ########.fr        #
+#    Updated: 2023/11/29 16:12:57 by ezhou            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,9 +20,8 @@ RM = rm -f
 
 CC = gcc -g -Wall -Wextra -Werror
 
-NAME = pipex
-SRC = pipex.c ft_find_path.c ft_process_args.c ft_full_clear.c ft_execute.c \
-ft_process_quotes.c ft_split_awk.c ft_here_doc.c
+NAME = push_swap
+SRC = 
 OBJ = $(SRC:.c=.o)
 
 all: $(NAME)

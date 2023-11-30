@@ -1,37 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_dpointer_size.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ezhou <ezhou@student.42malaga.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/11 11:08:33 by ezhou             #+#    #+#             */
-/*   Updated: 2023/11/29 17:49:35 by ezhou            ###   ########.fr       */
+/*   Created: 2023/11/30 12:08:03 by ezhou             #+#    #+#             */
+/*   Updated: 2023/11/30 12:16:47 by ezhou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *nptr)
+int	ft_dpointer_size(char **pointer)
 {
-	long	result;
-	int		index;
-	int		minus;
+	int	i;
 
-	minus = 1;
-	result = 0;
-	index = 0;
-	while ((nptr[index] >= 9 && nptr[index] <= 13) || nptr[index] == 32)
-		index++;
-	if (nptr[index] == '+' || nptr[index] == '-')
+	i = 0;
+	while (pointer[i])
 	{
-		if (nptr[index] == '-')
-			minus = -1;
-		index += 1;
+		i++;
 	}
-	while (nptr[index] >= '0' && nptr[index] <= '9')
-	{
-		result = result * 10 + (nptr[index++] - '0');
-	}
-	return (result * minus);
+	return (i);
 }

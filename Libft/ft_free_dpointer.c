@@ -1,37 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_free_dpointer.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ezhou <ezhou@student.42malaga.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/11 11:08:33 by ezhou             #+#    #+#             */
-/*   Updated: 2023/11/29 17:49:35 by ezhou            ###   ########.fr       */
+/*   Created: 2023/11/30 12:24:16 by ezhou             #+#    #+#             */
+/*   Updated: 2023/11/30 17:41:47 by ezhou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *nptr)
+void	ft_free_char(char **array)
 {
-	long	result;
-	int		index;
-	int		minus;
+	int	index;
 
-	minus = 1;
-	result = 0;
 	index = 0;
-	while ((nptr[index] >= 9 && nptr[index] <= 13) || nptr[index] == 32)
+	while (array[index])
+	{
+		free(array[index]);
 		index++;
-	if (nptr[index] == '+' || nptr[index] == '-')
-	{
-		if (nptr[index] == '-')
-			minus = -1;
-		index += 1;
 	}
-	while (nptr[index] >= '0' && nptr[index] <= '9')
+	free(array);
+}
+
+void	ft_free_int(int **array)
+{
+	int	index;
+
+	index = 0;
+	while (array[index])
 	{
-		result = result * 10 + (nptr[index++] - '0');
+		free(array[index]);
+		index++;
 	}
-	return (result * minus);
+	free(array);
+}
+
+void	ft_free_tpointer(char ***array)
+{
+	int	i;
+
+	i = 0;
+	while ((array)[++i])
+		ft_free_char((array)[i]);
+	free(array);
 }
