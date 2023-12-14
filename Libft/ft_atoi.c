@@ -6,13 +6,13 @@
 /*   By: ezhou <ezhou@student.42malaga.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 11:08:33 by ezhou             #+#    #+#             */
-/*   Updated: 2023/11/29 17:49:35 by ezhou            ###   ########.fr       */
+/*   Updated: 2023/12/11 13:20:26 by ezhou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *nptr)
+long	ft_atoi(const char *nptr)
 {
 	long	result;
 	int		index;

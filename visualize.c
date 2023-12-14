@@ -1,49 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_dpointer.c                                 :+:      :+:    :+:   */
+/*   visualize.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ezhou <ezhou@student.42malaga.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/30 12:24:16 by ezhou             #+#    #+#             */
-/*   Updated: 2023/12/11 15:50:31 by ezhou            ###   ########.fr       */
+/*   Created: 2023/12/14 12:54:08 by ezhou             #+#    #+#             */
+/*   Updated: 2023/12/14 12:54:11 by ezhou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "push_swap.h"
 
-void	ft_free_char(char **array)
+void	ft_show(t_stack *stack)
 {
-	int	index;
-
-	index = 0;
-	while (array[index])
+	if (stack == NULL)
+		return ;
+	else
 	{
-		free(array[index]);
-		index++;
+		ft_printf("Este es el nodo %d, su valor %d, posición deseada %d\n",
+			stack->index, stack->value, stack->target_pos);
+		ft_show(stack->next);
 	}
-	free(array);
-}
-
-void	ft_free_int(int **array)
-{
-	int	index;
-
-	index = 0;
-	while (array[index])
-	{
-		free(array[index]);
-		index++;
-	}
-	free(array);
-}
-
-void	ft_free_tpointer(char ***array)
-{
-	int	i;
-
-	i = -1;
-	while ((array)[++i])
-		ft_free_char((array)[i]);
-	free(array);
 }

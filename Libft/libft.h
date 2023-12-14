@@ -6,7 +6,7 @@
 /*   By: ezhou <ezhou@student.42malaga.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 12:03:30 by ezhou             #+#    #+#             */
-/*   Updated: 2023/11/30 17:41:04 by ezhou            ###   ########.fr       */
+/*   Updated: 2023/12/11 13:48:44 by ezhou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -206,7 +206,7 @@ char				*ft_strnstr(const char *big, const char *little,
  * @param nptr A number represented by a string
  * @return The number value of the string or 0 if any error happens
  */
-int					ft_atoi(const char *nptr);
+long				ft_atoi(const char *nptr);
 /**
  * @brief Applies the function f to every byte in the string s
  *
@@ -278,7 +278,7 @@ char				**ft_split(char const *s, char c);
  * @param n A number
  * @return It's string representation
  */
-char				*ft_itoa(int n);
+char				*ft_itoa(long ln);
 /**
  * @brief Writes the character c into the output fd and returns the number of
 bytes printed

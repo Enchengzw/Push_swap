@@ -6,7 +6,7 @@
 /*   By: ezhou <ezhou@student.42malaga.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 17:31:22 by ezhou             #+#    #+#             */
-/*   Updated: 2023/11/30 17:54:20 by ezhou            ###   ########.fr       */
+/*   Updated: 2023/12/14 13:01:18 by ezhou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	ft_get_size(char ***numbers)
 	return (size);
 }
 
-int	is_valid(char c, int j)
+int	ft_is_valid(char c, int j)
 {
 	if (j == 0)
 		return ((c == '+' | c == '-' | ft_isdigit(c)));
@@ -43,7 +43,7 @@ int	is_valid(char c, int j)
 		return (ft_isdigit(c));
 }
 
-char	***group_args(int argc, char **argv)
+char	***ft_group_args(int argc, char **argv)
 {
 	char	***result;
 	int		i;
@@ -65,55 +65,35 @@ char	***group_args(int argc, char **argv)
 		i++;
 		j++;
 	}
+	result[j] = 0;
 	return (result);
 }
 
-int	check_numbers(char ***to_check)
+int	ft_check_numbers(char ***to_check)
 {
 	int	i;
 	int	j;
-	int	bool;
 	int	k;
 
 	i = 0;
-	bool = 1;
-	while (to_check[i] && bool)
+	while (to_check[i])
 	{
 		j = 0;
-		while (to_check[i][j] && bool)
+		while (to_check[i][j])
 		{
 			k = 0;
-			while (to_check[i][j][k] && bool)
+			while (to_check[i][j][k])
 			{
-				bool = is_valid(to_check[i][j][k], k);
+				if (!ft_is_valid(to_check[i][j][k], k))
+				{
+					ft_printf("There are non digits arguments\n");
+					return (0);
+				}
 				k++;
 			}
 			j++;
 		}
 		i++;
 	}
-	return (bool);
-}
-
-int	**generate(char ***numbers)
-{
-	int	result;
-	int	size;
-	int	i;
-	int	j;
-
-	j = 0;
-	i = 0;
-	size = ft_get_size(numbers);
-	result = (int **)malloc(sizeof(int *) * size);
-	if (!result)
-		return (0);
-	
-}
-
-int	main(int argc, char **argv)
-{
-	char ***aux = group_args(argc, argv);
-	printf("%d\n", ft_get_size(aux));
-	return (0);
+	return (1);
 }

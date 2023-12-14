@@ -6,7 +6,7 @@
 /*   By: ezhou <ezhou@student.42malaga.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 11:14:34 by ezhou             #+#    #+#             */
-/*   Updated: 2023/10/19 15:15:46 by ezhou            ###   ########.fr       */
+/*   Updated: 2023/12/11 13:53:57 by ezhou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*ft_strnew(size_t size)
 	return (pointer);
 }
 
-int	ft_number_length(int n)
+int	ft_number_length(long n)
 {
 	int	counter;
 
@@ -40,28 +40,26 @@ int	ft_number_length(int n)
 	return (counter);
 }
 
-char	*ft_itoa(int n)
+char	*ft_itoa(long ln)
 {
 	char	*list;
 	int		length;
-	long	ln;
 
-	ln = n;
-	length = ft_number_length(n);
+	length = ft_number_length(ln);
 	list = ft_strnew(length + 1);
 	if (!list)
 		return (NULL);
 	if (ln < 0)
-	{
-		ln *= -1;
 		list[0] = '-';
-	}
 	if (ln == 0)
 		list[length - 1] = '0';
 	list[length] = '\0';
 	while (ln != 0)
 	{
-		list[length - 1] = ln % 10 + '0';
+		if (ln % 10 < 0)
+			list[length - 1] = ((ln % 10) * -1) + '0';
+		else
+			list[length - 1] = (ln % 10) + '0';
 		length--;
 		ln /= 10;
 	}
@@ -72,7 +70,7 @@ int	main(void)
 {
 	char	*str;
 
-	str = ft_itoa(0);
+	str = ft_itoa(9223372036854775807);
 	printf("%s\n", str);
 	return (0);
 }
