@@ -6,7 +6,7 @@
 /*   By: ezhou <ezhou@student.42malaga.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 16:20:32 by ezhou             #+#    #+#             */
-/*   Updated: 2023/12/14 13:05:24 by ezhou            ###   ########.fr       */
+/*   Updated: 2023/12/14 15:38:18 by ezhou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_stack	*ft_create_stack(int *unordered, int *ordered, int size)
 	i = 0;
 	while (i < size)
 	{
-		aux = ft_new_node(unordered[i], i, ordered);
+		aux = ft_new_node(unordered[i], i, ordered, size);
 		if (!aux)
 			return (ft_clear_stack(&start), NULL);
 		ft_add_back(&start, aux);
@@ -55,19 +55,4 @@ t_stack	*ft_generate_stack(int argc, char **argv)
 	if (!stack)
 		return (ft_free_tpointer(aux), free(array), free(to_order), NULL);
 	return (free(array), free(to_order), ft_free_tpointer(aux), stack);
-}
-
-void	leaks()
-{
-	system("leaks a.out");
-}
-
-int main(int argc, char **argv)
-{
-	t_stack *a;
-
-	atexit(leaks);
-	a = ft_generate_stack(argc, argv);
-	ft_show(a);
-	ft_clear_stack(&a);
 }

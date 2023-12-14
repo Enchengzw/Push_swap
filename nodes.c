@@ -6,7 +6,7 @@
 /*   By: ezhou <ezhou@student.42malaga.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 13:19:21 by ezhou             #+#    #+#             */
-/*   Updated: 2023/12/13 14:31:58 by ezhou            ###   ########.fr       */
+/*   Updated: 2023/12/14 15:52:47 by ezhou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	ft_find(int value, int *array)
 	return (i);
 }
 
-t_stack	*ft_new_node(int content, int index, int *to_order)
+t_stack	*ft_new_node(int content, int index, int *to_order, int size)
 {
 	t_stack	*node;
 
@@ -44,10 +44,13 @@ t_stack	*ft_new_node(int content, int index, int *to_order)
 		return (NULL);
 	node->value = content;
 	node->index = index;
-	node->pos = index;
 	node->target_pos = ft_find(content, to_order);
-	node->cost_a = 0;
+	if (index <= size / 2)
+		node->cost_a = index;
+	else
+		node->cost_a = size - index;
 	node->cost_b = 0;
+	node->size = size;
 	node->next = NULL;
 	return (node);
 }

@@ -6,7 +6,7 @@
 /*   By: ezhou <ezhou@student.42malaga.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 10:43:36 by ezhou             #+#    #+#             */
-/*   Updated: 2023/12/14 13:07:45 by ezhou            ###   ########.fr       */
+/*   Updated: 2023/12/14 15:37:05 by ezhou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,26 +101,3 @@ int	*ft_generate_array(char ***numbers)
 	}
 	return (result);
 }
-
-/*
-int	main(int argc, char **argv)
-{
-	char	***aux;
-	long	*array;
-	int		size;
-	int		i;
-
-	i = 0;
-	aux = group_args(argc, argv);
-	array = generate(aux);
-	size = ft_get_size(aux);
-	while (i < size)
-	{
-		printf("%ld\n", array[i]);
-		i++;
-	}
-	free(array);
-	ft_free_tpointer(aux);
-	return (0);
-}
-*/

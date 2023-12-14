@@ -1,26 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   visualize.c                                        :+:      :+:    :+:   */
+/*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ezhou <ezhou@student.42malaga.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/14 12:54:08 by ezhou             #+#    #+#             */
-/*   Updated: 2023/12/14 14:23:05 by ezhou            ###   ########.fr       */
+/*   Created: 2023/12/14 13:29:59 by ezhou             #+#    #+#             */
+/*   Updated: 2023/12/14 18:40:32 by ezhou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "push_swap.h"
 
-void	ft_show(t_stack *stack)
+void	ft_add_front(t_stack **lst, t_stack *new)
 {
-	if (stack == NULL)
-		return ;
+	if (!*lst)
+		*lst = new;
 	else
 	{
-		ft_printf("Nodo %d | valor %d | target_pos | %d | cost_a | %d | cost_b %d\n", stack->index, stack->value, stack->target_pos, stack->cost_a,
-			stack->cost_b);
-		ft_show(stack->next);
+		(new)->next = *lst;
+		*lst = new;
 	}
+}
+
+void	ft_push(t_stack **dst, t_stack **to_add)
+{
+	t_stack	*aux;
+
+	aux = (*to_add)->next;
+	(*to_add)->next = NULL;
+	ft_add_front(dst, *to_add);
+	*to_add = aux;
+}
+
+void	ft_push_b(t_stack **a, t_stack **b)
+{
+	ft_push(b, a);
+	ft_printf("pb\n");
+}
+
+void	ft_push_a(t_stack **a, t_stack **b)
+{
+	ft_push(a, b);
+	ft_printf("pa\n");
 }
