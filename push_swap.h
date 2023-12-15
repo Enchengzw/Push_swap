@@ -6,7 +6,7 @@
 /*   By: ezhou <ezhou@student.42malaga.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 17:05:21 by ezhou             #+#    #+#             */
-/*   Updated: 2023/12/14 18:41:08 by ezhou            ###   ########.fr       */
+/*   Updated: 2023/12/15 17:30:05 by ezhou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <limits.h>
 # include <stdlib.h>
-
+//1 is Rotate UP 0 is Reverse rotate DOWN
 typedef struct s_stack
 {
 	int				value;
@@ -24,6 +24,8 @@ typedef struct s_stack
 	int				size;
 	int				cost_a;
 	int				cost_b;
+	int				direction_a;
+	int				direction_b; 
 	struct s_stack	*next;
 }					t_stack;
 
@@ -57,6 +59,12 @@ void				ft_rotate_a(t_stack **a);
 void				ft_rotate_b(t_stack **b);
 void				ft_rotate_ab(t_stack **a, t_stack **b);
 void				ft_reverse_rotate(t_stack **stack);
+void				ft_revese_rotate_a(t_stack **a);
+void				ft_revese_rotate_b(t_stack **b);
+void				ft_revese_rotate_ab(t_stack **a, t_stack **b);
 t_stack				*ft_penultimate(t_stack *lst);
+int					ft_stack_size(t_stack *lst);
+int					ft_find_min_max(t_stack *stack, int *min);
+int					ft_find_node(int target_pos, t_stack *stack);
 
 #endif
