@@ -6,7 +6,7 @@
 /*   By: ezhou <ezhou@student.42malaga.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 17:05:21 by ezhou             #+#    #+#             */
-/*   Updated: 2023/12/15 17:30:05 by ezhou            ###   ########.fr       */
+/*   Updated: 2023/12/18 13:21:23 by ezhou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <limits.h>
 # include <stdlib.h>
-//1 is Rotate UP 0 is Reverse rotate DOWN
+// 1 is Rotate UP 0 is Reverse rotate DOWN
 typedef struct s_stack
 {
 	int				value;
@@ -25,7 +25,7 @@ typedef struct s_stack
 	int				cost_a;
 	int				cost_b;
 	int				direction_a;
-	int				direction_b; 
+	int				direction_b;
 	struct s_stack	*next;
 }					t_stack;
 
@@ -65,6 +65,14 @@ void				ft_revese_rotate_ab(t_stack **a, t_stack **b);
 t_stack				*ft_penultimate(t_stack *lst);
 int					ft_stack_size(t_stack *lst);
 int					ft_find_min_max(t_stack *stack, int *min);
-int					ft_find_node(int target_pos, t_stack *stack);
+int					ft_find_node_index(int target_pos, t_stack *stack);
+void				ft_cost_max(int max, t_stack *node, t_stack **stack,
+						int size);
+void				ft_cost_min(int min, t_stack *node, t_stack **stack,
+						int size);
+void				ft_cost_a_last(t_stack **stack, t_stack *node, int size);
+void				ft_cost_b_first(t_stack **stack, t_stack *node, int size);
+t_stack				*ft_find_minimum_higher_num(int num, t_stack *stack,
+						int size);
 
 #endif
