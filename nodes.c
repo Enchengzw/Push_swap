@@ -6,7 +6,7 @@
 /*   By: ezhou <ezhou@student.42malaga.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 13:19:21 by ezhou             #+#    #+#             */
-/*   Updated: 2023/12/15 15:44:04 by ezhou            ###   ########.fr       */
+/*   Updated: 2023/12/19 15:48:34 by ezhou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ t_stack	*ft_new_node(int content, int index, int *to_order, int size)
 	node->target_pos = ft_find(content, to_order);
 	node->cost_a = 0;
 	node->cost_b = 0;
+	node->true_cost = 0;
 	node->size = size;
 	node->next = NULL;
 	return (node);

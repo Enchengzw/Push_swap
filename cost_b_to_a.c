@@ -6,73 +6,73 @@
 /*   By: ezhou <ezhou@student.42malaga.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 12:14:28 by ezhou             #+#    #+#             */
-/*   Updated: 2023/12/18 13:24:50 by ezhou            ###   ########.fr       */
+/*   Updated: 2023/12/19 16:53:54 by ezhou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "push_swap.h"
 
-int	ft_stack_size(t_stack *lst)
+void	ft_update_index(t_stack *stack, int index, int size)
 {
-	int	count;
-
-	if (!lst)
-		return (0);
-	count = 1;
-	while (lst->next != NULL)
+	if (!stack)
+		return ;
+	else
 	{
-		lst = lst->next;
-		count += 1;
-	}
-	return (count);
-}
-
-void	ft_update_index(t_stack **stack, int size)
-{
-	int	i;
-
-	i = 0;
-	while (*stack)
-	{
-		(*stack)->index = i;
-		*stack = (*stack)->next;
-		i++;
+		stack->index = index;
+		ft_update_index((stack->next), index + 1, size);
 	}
 }
 
-void	ft_cost_b_first(t_stack **stack, int size)
+void	ft_cost_b_first(t_stack *stack, int size)
 {
-	while (*stack)
+	if (!stack)
+		return;
+	if ((stack)->index <= size / 2)
 	{
-		if ((*stack)->index <= size / 2)
-		{
-			(*stack)->cost_b = (*stack)->index;
-			(*stack)->direction_b = 1;
-		}
-		else
-		{
-			(*stack)->cost_b = size - (*stack)->index;
-			(*stack)->direction_b = 0;
-		}
+		(stack)->cost_b = stack->index;
+		(stack)->direction_b = 1;
 	}
+	else
+	{
+		(stack)->cost_b = size - stack->index;
+		(stack)->direction_b = 0;
+	}
+	ft_cost_b_first((stack->next), size);
 }
 
-void	ft_cost_a_last(t_stack **stack, int size)
+void	ft_cost_a_last2(t_stack *stack, int size)
 {
-	while (*stack)
+	if (!stack)
+		return ;
+	if ((stack)->index < size / 2)
 	{
-		if ((*stack)->index < size / 2)
-		{
-			(*stack)->cost_a = (*stack)->index + 1;
-			(*stack)->direction_a = 1;
-		}
-		else
-		{
-			(*stack)->cost_a = size - (*stack)->index - 1;
-			(*stack)->direction_a = 0;
-		}
+		(stack)->cost_a = stack->index + 1;
+		(stack)->direction_a = 1;
 	}
+	else
+	{	
+		(stack)->cost_a = size - stack->index - 1;
+		(stack)->direction_a = 0;
+	}
+	ft_cost_a_last2((stack->next), size);
+}
+
+void	ft_cost_a_last(t_stack *stack, int size)
+{
+	if (!stack)
+		return;
+	if ((stack)->index <= size / 2)
+	{
+		(stack)->cost_a = stack->index;
+		(stack)->direction_a = 1;
+	}
+	else
+	{
+		(stack)->cost_a = size - stack->index;
+		(stack)->direction_a = 0;
+	}
+	ft_cost_a_last((stack->next), size);
 }
 
 int	ft_find_node_index(int target_pos, t_stack *stack)
@@ -84,4 +84,25 @@ int	ft_find_node_index(int target_pos, t_stack *stack)
 		stack = stack->next;
 	}
 	return (0);
+}
+
+void	ft_true_cost(t_stack *stack_b)
+{
+	int	higher;
+	int	lower;
+
+	if (!stack_b)
+		return ;
+	higher = stack_b->cost_b;
+	lower = stack_b->cost_a;
+	if (stack_b->cost_a > stack_b->cost_b)
+	{
+		higher = stack_b->cost_a;
+		lower = stack_b->cost_b;
+	}
+	if (stack_b->direction_a == stack_b->direction_b)
+		stack_b->true_cost = higher + 1;
+	else
+		stack_b->true_cost = stack_b->cost_a + stack_b->cost_b + 1;
+	ft_true_cost(stack_b->next);
 }

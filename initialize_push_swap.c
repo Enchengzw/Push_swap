@@ -1,36 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cost_b_to_a_utils2.c                               :+:      :+:    :+:   */
+/*   initialize_push_swap.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ezhou <ezhou@student.42malaga.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/18 13:01:32 by ezhou             #+#    #+#             */
-/*   Updated: 2023/12/18 17:39:25 by ezhou            ###   ########.fr       */
+/*   Created: 2023/12/19 12:22:47 by ezhou             #+#    #+#             */
+/*   Updated: 2023/12/19 16:23:02 by ezhou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "push_swap.h"
 
-t_stack	*ft_find_minimum_higher_num(int num, t_stack *stack, int max)
+int	ft_stack_size(t_stack *lst)
 {
-	t_stack	*result;
-	int		aux;
+	int	count;
 
-	aux = max;
-	result = 0;
-	while (stack)
+	if (!lst)
+		return (0);
+	count = 1;
+	while (lst && lst->next != NULL)
 	{
-		if (stack->target_pos > num)
-		{
-			if (stack->target_pos - num < aux)
-			{
-				aux = stack->target_pos - num;
-				result = stack;
-			}
-		}
-		stack = stack->next;
+		lst = lst->next;
+		count += 1;
 	}
-	return (result);
+	return (count);
+}
+
+void	ft_initialize_push_swap(t_stack **stack_a, t_stack **stack_b)
+{
+	int		size;
+	int		i;
+
+	i = 0;
+	size = ft_stack_size(*stack_a);
+	while (i < (size - 3))
+	{
+		ft_push_b(stack_a, stack_b);
+		i++;
+	}
 }

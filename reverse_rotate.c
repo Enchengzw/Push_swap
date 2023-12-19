@@ -6,7 +6,7 @@
 /*   By: ezhou <ezhou@student.42malaga.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 18:27:14 by ezhou             #+#    #+#             */
-/*   Updated: 2023/12/15 12:42:19 by ezhou            ###   ########.fr       */
+/*   Updated: 2023/12/19 16:38:50 by ezhou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,19 +33,19 @@ void	ft_reverse_rotate(t_stack **stack)
 	penultimate->next = NULL;
 }
 
-void	ft_revese_rotate_a(t_stack **a)
+void	ft_reverse_rotate_a(t_stack **a)
 {
 	ft_reverse_rotate(a);
 	ft_printf("rra\n");
 }
 
-void	ft_revese_rotate_b(t_stack **b)
+void	ft_reverse_rotate_b(t_stack **b)
 {
 	ft_reverse_rotate(b);
 	ft_printf("rrb\n");
 }
 
-void	ft_revese_rotate_ab(t_stack **a, t_stack **b)
+void	ft_reverse_rotate_ab(t_stack **a, t_stack **b)
 {
 	ft_reverse_rotate(a);
 	ft_reverse_rotate(b);
