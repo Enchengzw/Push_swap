@@ -1,20 +1,20 @@
-## Sobre push_swap 
+## Push_swap 
 
-Push_swap es un proyecto de algoritmia. Consiste en ordenar un stack de números
-en el menor número de operaciones posibles y mediante el uso de un stack auxiliar.
+Push swap is a algorythm project. Your program should receive a list of integers and should create a stack with it.
+Afterwards, you should order the stack with the least amount of operations with the aid of an auxiliar stack.
 
-## Operaciones permitidas
+## Operations
 
-| Operaciones | Explicación |
+| Operations | Explanation |
 | :--- | :--- |
-| sa | swap a - intercambia los dos primeros elementos encima del stack a. |
-| sb | swap b - intercambia los dos primeros elementos encima del stack b. |
-| ss | swap a y swap b a la vez. |
-| pa | push a -  toma el primer elemento del stack b y lo pone encima del stack a. |
-| pb | push b -  toma el primer elemento del stack a y lo pone encima del stack b. |
-| ra | rotate a - desplaza hacia arriba todos los elementos del stack a una posición, el primer elemento se convierte en el último. |
-| rb | rotate b - desplaza hacia arriba todos los elementos del stack b una posición, el primer elemento se convierte en el último. |
-| rr | ra y rb a la vez. |
-| rra | reverse rotate a - desplaza hacia abajo todos los elementos del stack a una posición, el último elemento se convierte en el primero. |
-| rrb | reverse rotate b - desplaza hacia abajo todos los elementos del stack b una posición, el último elemento se convierte en el primero. |
-| rrr | rra y rrb a la vez. |
+| sa | swap a - Swap the first 2 elements at the top of stack a. Do nothing if there is only one or no elements. |
+| sb | swap b - : Swap the first 2 elements at the top of stack b. Do nothing if there is only one or no elements. |
+| ss | sa and sb at the same time |
+| pa | push a -  Take the first element at the top of b and put it at the top of a. Do nothing if b is empty. |
+| pb | push b - Take the first element at the top of a and put it at the top of b. Do nothing if a is empty. |
+| ra | rotate a - Shift up all elements of stack a by 1. The first element becomes the last one. |
+| rb | rotate b - Shift up all elements of stack b by 1. The first element becomes the last one. |
+| rr | ra y rb at the same time. |
+| rra | reverse rotate a - Shift down all elements of stack a by 1. The last element becomes the first one. |
+| rrb | reverse rotate b - Shift down all elements of stack b by 1. The last element becomes the first one. |
+| rrr | rra y rrb at the same time |
