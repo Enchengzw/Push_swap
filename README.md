@@ -1,6 +1,6 @@
 ## Push_swap 
 
-Push swap is a algorythm project. Your program should receive a list of integers and should create a stack with it.
+Push swap is an algorithm project. Your program should receive a list of integers and should create a stack with it.
 Afterwards, you should order the stack with the least amount of operations with the aid of an auxiliar stack.
 
 ## Operations
